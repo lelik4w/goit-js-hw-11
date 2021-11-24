@@ -1,0 +1,228 @@
+.search-bar {
+  width: 100vw;
+  top: 0;
+  padding: 1em;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  background-color: royalblue;
+  z-index: 999;
+
+  .a11y-hidden {
+    position: absolute;
+    left: -1000in;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: polygon(0 0, 0 0);
+  }
+
+  .search {
+    width: 90%;
+    max-width: 30rem;
+    position: relative;
+
+    .input-bar {
+      --active: #eee;
+      align-items: center;
+      background: #fff;
+      border: 2px solid #0000;
+      border-radius: 4rem; // 1rem 4rem 4rem 1rem;
+      box-sizing: border-box;
+      box-shadow: 0 1rem 2rem -1.5rem #0005;
+      display: inline-flex;
+      height: 3rem;
+      overflow: hidden;
+      transition: box-shadow 0.5s;
+      width: 100%;
+
+      &:focus-within {
+        background: #fffffc;
+        border: 2px solid #444;
+        box-shadow: 0 1rem 2rem -1.5rem #0007;
+      }
+
+      &:hover {
+        box-shadow: 0 1rem 2rem -1.5rem #0007;
+      }
+
+      label {
+        position: absolute;
+        color: #888;
+        left: 1.625rem;
+        font-family: Lato, Arial, sans-serif;
+        font-size: 1.25rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: calc(100% - 6rem);
+        max-width: calc(100% - 6rem);
+        display: flex;
+        align-items: center;
+        z-index: 0;
+
+        span {
+          visibility: hidden;
+          overflow: hidden;
+          max-width: 0;
+          display: inline-block;
+          margin: 0 0.125rem;
+          transition: max-width 1s, margin 0.125s;
+          transition-delay: 1s;
+
+          &.show {
+            visibility: visible;
+            margin: 0 0.25rem;
+            max-width: calc(100% - 6rem);
+          }
+        }
+      }
+
+      input {
+        background: transparent;
+        border: 0;
+        box-sizing: border-box;
+        flex: 1;
+        font-size: 1.25rem;
+        margin-left: 0.5rem;
+        min-width: 8rem;
+        outline: none;
+        padding-left: 1rem;
+        position: relative;
+        z-index: 1;
+
+        &::-ms-clear,
+        &::ms-reveal {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+
+        &::-webkit-search-decoration,
+        &::-webkit-search-cancel-button,
+        &::-webkit-search-results-button,
+        &::-webkit-search-results-decoration {
+          display: none;
+          width: 0;
+          height: 0;
+        }
+      }
+
+      button {
+        background: transparent;
+        border: 0;
+        border-radius: 50%;
+        color: #444;
+        font-size: 1.25rem;
+        margin: 0;
+        outline: none;
+        width: 3rem;
+        min-width: 3rem;
+        height: 3rem;
+        transition: background-color, color;
+        transition-duration: 0.25s;
+        box-shadow: 0 0 2rem #0000;
+
+        &:hover {
+          background: #eee;
+        }
+
+        &:focus {
+          background: #444;
+          color: #fff;
+        }
+
+        &:active,
+        &.active {
+          background: #000;
+        }
+
+        &#dictate {
+          transform: scale(0);
+          transition: transform 0.5s;
+          transition-delay: 1s;
+          visibility: hidden;
+
+          svg {
+            display: none;
+            margin: auto auto;
+          }
+
+          &.show {
+            visibility: visible;
+            transform: scale(1);
+          }
+
+          &.active {
+            i {
+              display: none;
+            }
+
+            svg {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.gallery {
+  margin-top: 80px;
+  display: flex;
+  flex-flow: row wrap;
+
+  .photo-card {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 10px;
+    max-width: calc(25% - 20px);
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba($color: #555, $alpha: 0.6);
+    border-top: 1px solid #eee;
+
+    >a {
+      width: 100%;
+      height: 210px;
+      display: block;
+      overflow: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto;
+      transform: translate(-50%, -50%) scale(1.1);
+      top: 50%;
+      left: 50%;
+      position: relative;
+    }
+
+    .info {
+      margin: auto;
+      display: flex;
+      flex-flow: row nowrap;
+      font-size: smaller;
+      padding: 0 10px;
+
+      .info-item {
+        text-align: center;
+      }
+    }
+  }
+}
+
+.button {
+  margin: 1em auto;
+  transform: translate(calc(50vw - 50%));
+}
+
+.button.is-hidden {
+  display: none;
+}
+
+.button>.spinner.is-hidden {
+  display: none;
+}
