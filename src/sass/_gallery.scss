@@ -201,14 +201,21 @@
     }
 
     .info {
-      margin: auto;
+      width: 100%;
+      margin: 5px auto;
       display: flex;
       flex-flow: row nowrap;
       font-size: smaller;
       padding: 0 10px;
+      justify-content: space-between;
 
       .info-item {
+        margin: 0 5px;
         text-align: center;
+
+        b {
+          display: block;
+        }
       }
     }
   }
